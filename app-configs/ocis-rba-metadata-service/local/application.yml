@@ -1,0 +1,14 @@
+api:
+  security:
+    enabled: true
+
+httpconnectionpool:
+  httpClient:
+    clientPoolSize: 100
+    defaultMaxPerRoute: 20
+    validateAfterInactivity: 4000
+    connectionRequestTimeoutInMilliseconds: 2000
+    connectTimeoutInMilliseconds: 40000
+    socketTimeoutInMilliseconds: 30000
+    timeToLive: 45000
+    timeToLiveTimeUnit: MILLISECONDS 

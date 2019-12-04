@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    config:
+      allowOverride: true
+      overrideNone: true
+    
+## common configurations used across micro services
+services:
+  session:
+    serverConfiguration:
+       hostUrl: http://localhost:8019/session
+       sessionidUri: /{id}
+       deletenamevaluepairsbykeyUri: /id/{id}/key/{key}nameValuePairs
+       updatenamevaluepairsbykeyUri: /id/{id}/nameValuePairs
+       sessiondataUri: /id/{id}/sessionData
+       updatesessionstateUri: /id/{id}/state/{state}
+       setsessionUri: /setSession
+       transformTokenToSessionUri: /{tokenType}
+  metadata:
+    serverConfiguration:
+       hostUrl: http://localhost:8015/rba/metadata
+       tenantUri: /tenant
+       tenantidUri: /tenant/{id}
+       clientidUri: /tenant/client/{client}
+       clientUri: /tenant/client/
+       questionUri: /questions
+       questionbucketUri: /metadata/questions/{bucket}
+    cacheDurationInMinute: 30
+  user:
+    serverConfiguration:
+       hostUrl: http://localhost:8016/rba/users
+       getSecurityQuestionsUri: /{id}/questions
+       getStatusUri: /{id}/status
+       getUserUri: /{id}
+       countryPhoneJsonUrl: url:${spring.cloud.config.uri}/${spring.application.name}/${spring.profiles.active}/${spring.cloud.config.label:master}/country-phone.json
+ 
+##cryptagent location
+cryptagent:
+  properties: url:${spring.cloud.config.uri}/${spring.application.name}/${spring.profiles.active}/${spring.cloud.config.label:master}/cryptagent.properties   
